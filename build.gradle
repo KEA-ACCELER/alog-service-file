@@ -20,7 +20,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.projectlombok:lombok'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	
 	//mysql
@@ -35,6 +36,11 @@ dependencies {
 
 	//Test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//Storage
+	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+	
+
 }
 
 tasks.named('test') {

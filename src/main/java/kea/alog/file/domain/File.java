@@ -24,10 +24,10 @@ public class File extends BaseTimeEntity implements Serializable{
     @Column(name = "file_pk")
     private Long filePk;
 
-    @Column(name = "file_name", length=50)
+    @Column(name = "file_name", length=150)
     private String fileName;
 
-    @Column(name = "file_path", length=50)
+    @Column(name = "file_path", length=200)
     private String filePath;
 
     @Column(name = "file_deleted")

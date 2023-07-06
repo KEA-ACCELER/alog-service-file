@@ -24,5 +24,4 @@ services:
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       interval: 10s
-      timeout: 2s
-      retries: 10docker-compose.yml
+      

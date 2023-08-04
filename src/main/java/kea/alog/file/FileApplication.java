@@ -9,7 +9,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 public class FileApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FileApplication.class, args);
+		SpringApplication app = new SpringApplication(FileApplication.class);
+		app.setDefaultProperties(java.util.Collections.singletonMap("server.port", "8086"));
+		app.run(args);
+		
 	}
 
 }

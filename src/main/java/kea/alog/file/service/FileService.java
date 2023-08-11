@@ -51,41 +51,16 @@ public class FileService {
     @Transactional
     public List<File> saveFile(ArrayList<MultipartFile> multipartFiles ) throws IOException {
         
-
-        // if (multipartFiles.size() == 0) {
-        //     throw new IllegalArgumentException("파일이 존재하지 않습니다.");
-        // }
-        // System.out.println(uploadFiles.toString());
-        // if (uploadFiles.size() == 0) {
-        //     throw new IllegalArgumentException("파일의 용도가 존재하지 않습니다. user, issue, release 중 선택하여 보내주세요");
-        // }
-
-        // if (multipartFiles.size() != uploadFiles.size()) {
-        //     throw new IllegalArgumentException("파일의 갯수와 용도의 갯수가 일치하지 않습니다.");
-        // }
-
-        // System.out.println("여기까지 옴 size "+ uploadFiles.size());
-        
         List<File> files = new ArrayList<>();
 
         for (int i = 0; i < multipartFiles.size(); i++) {
 
             String fileName = "";
             MultipartFile multipartFile = multipartFiles.get(i);
-            //FileDto.UploadFile uploadFile = uploadFiles.get(i);
-            if (fileName.length()>50){
-                throw new IllegalArgumentException("파일명이 너무 깁니다.");
-            }
-            // if (uploadFile.getFileName() == null) {
-            //     fileName = multipartFile.getOriginalFilename();
-            // } else {
-            //     fileName = uploadFile.getFileName();
-            // }
             fileName = multipartFile.getOriginalFilename();
-
-            // 파일명 중복 방지를 위해 파일명 앞에 UUID 추가
-            //String s3FileName = uploadFile.getPurpose() + fileName + "-" + UUID.randomUUID();
-    
+            if (fileName.length()>50){
+                fileName = fileName.substring(0, 50);
+            }
             String s3FileName = fileName + "-" + UUID.randomUUID().toString().substring(0, 10);
 
             ObjectMetadata objMeta = new ObjectMetadata();
